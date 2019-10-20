@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="BankyApp.AccountsPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:card="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:entity="clr-namespace:BankyApp.Entities;assembly=BankyApp.Entities"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:sync="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+    xmlns:viewmodels="clr-namespace:BankyApp"
+    Title="Accounts"
+    mc:Ignorable="d">
+    <d:ContentPage.BindingContext>
+        <viewmodels:AccountsPageModel />
+    </d:ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="ItemTemplate" x:Name="ItemTemplate">
+                <card:SfCardView Margin="10,0">
+                    <Grid Margin="10" ColumnSpacing="40">
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Text="{Binding AccountName}" />
+
+                        <Label Grid.Row="1" Text="Acc No:" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Text="{Binding AccountNumber}" />
+
+                        <Label Grid.Row="2" Text="Balance:" />
+                        <Label
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Text="{Binding TotalAmount}" />
+                    </Grid>
+
+                </card:SfCardView>
+
+            </DataTemplate>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+
+            <sync:SfListView
+                x:Name="listView"
+                Margin="0,20,0,0"
+                AllowKeyboardNavigation="True"
+                AutoFitMode="Height"
+                ItemTemplate="{StaticResource ItemTemplate}"
+                ItemsSource="{Binding Accounts}"
+                SelectedItem="{Binding AccountSelected}"
+                SelectionBackgroundColor="#E4E4E4"
+                SelectionGesture="Tap"
+                SelectionMode="Single"
+                VerticalOptions="Start">
+                <sync:SfListView.FooterTemplate>
+                    <DataTemplate>
+                        <Grid Margin="20" VerticalOptions="StartAndExpand">
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+
+                            <Label Text="Credit" />
+                            <Label
+                                Grid.Column="1"
+                                HorizontalOptions="EndAndExpand"
+                                Text="{Binding TotalCredit}" />
+                            <Label Grid.Row="1" Text="Debit" />
+                            <Label
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                HorizontalOptions="EndAndExpand"
+                                Text="{Binding TotalDebit}" />
+                            <Label
+                                Grid.Row="2"
+                                HorizontalOptions="EndAndExpand"
+                                Text="Total" />
+                            <Label
+                                Grid.Row="2"
+                                Grid.Column="1"
+                                HorizontalOptions="EndAndExpand"
+                                Text="{Binding TotalAmount}" />
+                        </Grid>
+                    </DataTemplate>
+                </sync:SfListView.FooterTemplate>
+            </sync:SfListView>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
