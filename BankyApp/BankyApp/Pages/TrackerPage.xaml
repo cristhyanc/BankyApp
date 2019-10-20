@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="BankyApp.TrackerPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="clr-namespace:BankyApp"
+    Title="Money Tracker"
+    mc:Ignorable="d">
+    <d:ContentPage.BindingContext>
+        <viewmodels:TrackerPageModel />
+    </d:ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <viewmodels:DataMarkerConverter x:Key="converter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="FillAndExpand">
+
+            <chart:SfChart
+                x:Name="Chart"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand">
+                <chart:SfChart.Title>
+                    <chart:ChartTitle Text="Money Tracker" />
+                </chart:SfChart.Title>
+                <chart:SfChart.ChartBehaviors>
+                    <chart:ChartTooltipBehavior />
+                </chart:SfChart.ChartBehaviors>
+                <chart:SfChart.Legend>
+                    <chart:ChartLegend
+                        DockPosition="Top"
+                        IconHeight="14"
+                        IconWidth="14"
+                        OverflowMode="Wrap"
+                        ToggleSeriesVisibility="True" />
+                </chart:SfChart.Legend>
+                <chart:SfChart.Series>
+                    <chart:PieSeries
+                        x:Name="pieSeries"
+                        EnableAnimation="True"
+                        ExplodeOnTouch="True"
+                        GroupMode="Value"
+                        GroupTo="25"
+                        ItemsSource="{Binding Categories}"
+                        XBindingPath="Description"
+                        YBindingPath="Amount">
+                        <chart:PieSeries.ColorModel>
+                            <chart:ChartColorModel Palette="Natural" />
+                        </chart:PieSeries.ColorModel>
+                        <chart:PieSeries.DataMarker>
+                            <chart:ChartDataMarker>
+                                <chart:ChartDataMarker.LabelTemplate>
+                                    <DataTemplate>
+                                        <StackLayout Orientation="Vertical">
+                                            <Label
+                                                FontSize="12"
+                                                HorizontalOptions="CenterAndExpand"
+                                                Text="{Binding Converter={StaticResource converter}, ConverterParameter='Label'}"
+                                                TextColor="White" />
+                                            <Label
+                                                FontSize="12"
+                                                HorizontalOptions="CenterAndExpand"
+                                                Text="{Binding Converter={StaticResource converter}}"
+                                                TextColor="White" />
+                                        </StackLayout>
+                                    </DataTemplate>
+                                </chart:ChartDataMarker.LabelTemplate>
+                            </chart:ChartDataMarker>
+                        </chart:PieSeries.DataMarker>
+                    </chart:PieSeries>
+                </chart:SfChart.Series>
+            </chart:SfChart>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

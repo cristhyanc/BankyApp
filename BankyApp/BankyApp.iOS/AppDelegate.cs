@@ -24,6 +24,8 @@ namespace BankyApp.iOS
         {
             global::Xamarin.Forms.Forms.Init();
             Syncfusion.XForms.iOS.Border.SfBorderRenderer.Init();
+            Syncfusion.SfChart.XForms.iOS.Renderers.SfChartRenderer.Init();
+            Syncfusion.XForms.iOS.TabView.SfTabViewRenderer.Init();
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);

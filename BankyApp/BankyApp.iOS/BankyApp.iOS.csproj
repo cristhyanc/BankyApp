@@ -144,6 +144,9 @@
     <PackageReference Include="Syncfusion.Xamarin.Core">
       <Version>17.3.0.17</Version>
     </PackageReference>
+    <PackageReference Include="Syncfusion.Xamarin.SfChart">
+      <Version>17.3.0.17</Version>
+    </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfListView">
       <Version>17.3.0.17</Version>
     </PackageReference>
@@ -151,6 +154,9 @@
       <Version>17.3.0.17</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfNumericTextBox">
+      <Version>17.3.0.17</Version>
+    </PackageReference>
+    <PackageReference Include="Syncfusion.Xamarin.SfTabView">
       <Version>17.3.0.17</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="4.2.0.848062" />

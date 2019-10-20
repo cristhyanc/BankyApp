@@ -17,12 +17,22 @@ namespace BankyApp
                 Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MTU5MTk4QDMxMzcyZTMzMmUzMGFvd0UvK2ZtUm5LSXYxRE9Rc3NvZnBOUFZqTHJqWkF2WVFKa1JVRENETFk9");
                 InitializeComponent();
 
+               // Page page = new BankyApp.MainPage();
+               //page.BindingContext = new MainPageModel();
+                //  var mainPage = new FreshNavigationContainer(page);
+
                 var mainPage = new FreshTabbedNavigationContainer();
-               
-                mainPage.On<Xamarin.Forms.PlatformConfiguration.Android>().SetToolbarPlacement(ToolbarPlacement.Bottom);
-                mainPage.AddTab<AccountsPageModel >("Accounts", null);
+
+
+                // mainPage.On<Xamarin.Forms.PlatformConfiguration.Android>().SetToolbarPlacement(ToolbarPlacement.Bottom);
+                //mainPage.UnselectedTabColor = Color.Black;
+                //mainPage.SelectedTabColor = Color.DodgerBlue;
+                mainPage.AddTab<TrackerPageModel>("Tracker", null);
+                mainPage.AddTab<AccountsPageModel>("Accounts", null);
                 mainPage.AddTab<AboutPageModel>("About", null);
                 mainPage.AddTab<ContactPageModel>("Contact", null);
+               
+
                 MainPage = mainPage;
             }
             catch (Exception ex)

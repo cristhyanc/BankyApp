@@ -92,7 +92,7 @@ namespace BankyApp
         {
             try
             {
-               await CoreMethods.PushPageModel<AccountTransactionsPageModel>(true);
+                await CoreMethods.PushPageModel<AccountTransactionsPageModel>();
             }
             catch (Exception ex)
             {
