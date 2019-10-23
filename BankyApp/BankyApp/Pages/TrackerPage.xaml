@@ -42,15 +42,15 @@
                     <chart:PieSeries
                         x:Name="pieSeries"
                         EnableAnimation="True"
-                        ExplodeOnTouch="True"
-                        GroupMode="Value"
-                        GroupTo="25"
+                        ExplodeOnTouch="True" 
+                        GroupMode="Value" 
+                        GroupTo="25" 
                         ItemsSource="{Binding Categories}"
                         XBindingPath="Description"
                         YBindingPath="Amount">
                         <chart:PieSeries.ColorModel>
                             <chart:ChartColorModel Palette="Natural" />
-                        </chart:PieSeries.ColorModel>
+                        </chart:PieSeries.ColorModel> 
                         <chart:PieSeries.DataMarker>
                             <chart:ChartDataMarker>
                                 <chart:ChartDataMarker.LabelTemplate>
